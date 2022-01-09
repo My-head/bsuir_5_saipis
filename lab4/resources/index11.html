@@ -1,0 +1,16 @@
+<html>
+  <body bgcolor=#C6F7FF>
+    <img src ="hide.jpg" id="my"  style="position: absolute; top:40px; left:90px; visibility:hidden"/>
+    <script type="text/javascript">
+      function tend() {
+        document.getElementById('my').style.visibility='visible';
+      }
+      function tn() {
+        document.getElementById('my').style.visibility='hidden';
+      }
+
+    </script>
+    <input type="button" onclick="tend()" value="Show">
+    <input type="button" onclick="tn()" value="Hide">
+  </body>
+</html>

@@ -1,0 +1,30 @@
+body{
+    background-color:#0f422f;
+    color: #fff;
+}
+
+table{
+    margin: 0 auto;
+    background-color: #fff;
+    color: #000;
+    font-size: 25px;
+}
+
+td{
+    width: 8%;
+}
+
+input{
+    color: #fff;
+}
+
+.inputBtn{
+    color: #000;
+    margin-top: 10px;
+}
+
+.form_add{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 25px;
+}
+

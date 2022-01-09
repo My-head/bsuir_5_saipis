@@ -1,0 +1,73 @@
+body{
+    background-image: url(../resource/35.jpg); 
+
+}
+
+h1{
+    text-align: center;
+}
+
+
+
+.container {
+    width: 40%;
+    margin: 40px auto;
+    box-shadow: 0 0 10px #ccc;
+    padding: 10px;
+    background-color:rgb(181, 253, 229)
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.form_item {
+    margin: 10px;
+}
+
+.buttons {
+    text-align: center;
+}
+
+.buttons button {
+    width: 100px;
+    margin: 0 10px;
+}
+
+.modal_wrapper {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.modal {
+    margin: 15% auto;
+    width: 40%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+.modal div {
+    padding: 10px;
+    width: 90%;
+    margin: 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+    background-color: rgb(238, 238, 238);
+    text-align: left;
+}

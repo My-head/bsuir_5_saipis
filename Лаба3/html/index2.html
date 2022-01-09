@@ -1,0 +1,196 @@
+<html lang="en">
+<head>
+    <title>Лаба 3</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+   
+
+</head>
+<body onload="Print()">
+<div id="flex-conteiner">
+    <header><img src="../resource/header.jpg" alt="">
+    </header>
+    <div id="group">
+        <article>
+            <div>
+                <table class="infoTable">
+                    <caption><h3>Результирующая таблица</h3></caption>
+                    <br>
+                    <tr>
+                        <th> Имя</th>
+                        <th>Пол</th>
+                        <th>Дата рождения</th>
+                        <th>E-mail</th>
+                        <th>Модель</th>
+                        <th>Отзыв</th>
+                        <th>Плюшки</th>
+                    </tr>
+                    <tbody id="tbody">
+
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="withNames">
+                <h3 style="margin:0 auto">Имена зарегистрировавшихся</h3>
+
+
+              <input type="input" id="name" list="datalist" />
+                    <datalist id="datalist">
+               <input type="button" onclick="abc()" />
+                    </datalist>
+<!--
+                <ol style="margin: 0 auto;font-size:20px" id="ol"></ol>
+-->
+            </div>
+
+            <div class="withNames">
+                <h3 style="margin:0 auto">Имена зарегистрировавшихся (в обр. порядке)</h3>
+
+            
+                <ol style="margin: 0 auto;font-size:20px" id="ol"></ol>
+
+            </div>
+
+        </article>
+        <nav><h3>Связь с нами</h3>
+            <a href="">Twitter</a>
+            <a href="">Instagram</a>
+            <a href="">Facebook</a>
+            <a href="">E-mail</a>
+            <a href="">Вконтакте</a>
+        </nav>
+
+        <aside>
+            <h3>Меню</h3>
+            <a onclick="openForm()" >Главная</a>
+            <a  href="">Результаты опроса </a>
+            <input type="button" onclick="openForm()" value="Вернуться к форме"
+                   style="margin: 10px 20px 10px 20px;padding:10px 10px"/>
+            <iframe src="https://top10smartfonov.ru/reyting/rejting-smartfonov-cena-kachestvo/" width="640" height="480"></iframe>
+        </aside>
+    </div>
+    <footer><p>Minsk, 2021</p>
+    </footer>
+</div>
+</body>
+<script type="text/javascript">
+const arr = []
+    function Print() {
+        let score = decodeURIComponent(location.search.substr(1)).split('&');
+        score.splice(0, 1);
+        score = score.toString();
+        let mass = [];
+        mass = score.split(';');
+
+        for (let j = 0; j < mass.length; j++) {
+            mass[j] = mass[j].split(" ");
+        }
+
+        let objects = [];
+        for (let i = 0; i < mass.length; i++) {
+            if (!mass[i][6]) {
+                
+                objects[i] = {
+                    name: mass[i][0],
+                    radioSex: mass[i][1],
+                    date: mass[i][2],
+                    email: mass[i][3],
+                    type: mass[i][4],
+                    otzyv: mass[i][5],
+                    extra: "-"    
+                }
+            } else {
+                objects [i] = {
+                    name: mass[i][0],
+                    radioSex: mass[i][1],
+                    date: mass[i][2],
+                    email: mass[i][3],
+/*                        color: mass[i][3],*/
+                    type: mass[i][4],
+                    otzyv: mass[i][5],
+                    extra: mass[i][6] 
+                }
+            }
+        }
+
+/*Чтоб время показывалось красиво*/
+        for (let i = 0; i < objects.length; i++) {
+            let str = objects[i].date;
+            str = str.replace("T", " ");
+            objects[i].date = str;
+
+        }
+
+
+
+        var tbody = document.getElementById('tbody');
+        for (let i = 0; i < objects.length; i++) {
+            let tr = "<tr>";
+            let td = "<td>";
+
+            let trClose = "</tr>";
+            let tdClose = "</td>";
+
+
+            tr += td + objects[i].name + tdClose +
+                td + objects[i].radioSex + tdClose +
+                td + objects[i].date + tdClose +
+                td + objects[i].email + tdClose +
+/*                    td + objects[i].color + tdClose +*/
+                td + objects[i].type + tdClose +
+                td + objects[i].otzyv + tdClose +
+                td + objects[i].extra + tdClose +
+                trClose;
+            tbody.innerHTML += tr;
+            
+        }
+
+/* для OL-а передача имён   РАБОТАЕТ!!!!!! */
+
+        var ol = document.getElementById('ol');
+       
+        for (let i =  objects.length-1 ; i >= 0; i--) {
+            let li = "<li>";
+            let liClose = "</li>";
+
+            li += objects[i].name + liClose;
+            ol.innerHTML += li;
+            }
+        
+/*
+для ДАТАЛИСТА передача имён  НЕ РАБОТАЕТ!!!!!! 
+
+        var datalist = document.getElementById('datalist');
+        for (let i = 0; i < objects.length; i++) {
+            let option = "<option value=&quot ";
+            let optionClose = "&quot>";
+            let so = null;
+           so =  option + objects[i].name + optionClose;
+            datalist.innerHTML += so;
+
+        }
+        */
+    }
+
+        function openForm() {
+
+            // window.open('index_2var.html?&');
+            window.close();
+        }
+
+function abc() {  
+var nameElement = document.getElementById("name");   
+var newOptionElement = document.createElement("option");
+newOptionElement.textContent = nameElement.value;
+
+var listNameElement = document.getElementById("datalist"); 
+listNameElement.appendChild(newOptionElement);
+nameElement.value = "";
+}
+
+
+</script>
+
+</html>

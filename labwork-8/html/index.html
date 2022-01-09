@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Labwork-8</title>
+</head>
+<body>
+    <div class="container">
+
+        <h1>Заявка на покупку продукции</h1>
+        <form id="form" method="POST">
+            <div class="form_item">
+                Продукт: <input list="products" type="text" name="product">
+                <datalist id="products">
+                    <option value="Настольная лампа"></option>
+                    <option value="Тример"></option>
+                    <option value="Фотоаппарат"></option>
+                    <option value="Фен"></option>
+                    <option value="Телефон"></option>
+                    <option value="Наушники"></option>
+                    <option value="Электрический чайник"></option>
+                    <option value="Мультиварка"></option>
+                </datalist>
+            </div>
+            <div class="form_item">
+                Электронная почта: <input type="email" name="email">
+            </div>
+            <div class="form_item">
+                Пол:
+                <input type="radio" name="sex" id="maleSex" value="male"><label for="maleSex">Мужской</label>
+                <input type="radio" name="sex" id="femaleSex" value="female"><label for="femaleSex">Женский</label>
+            </div>
+            <div class="form_item">
+                <textarea name="review" id="review" cols="50" rows="8" placeholder="Ваш отзыв"></textarea>
+            </div>
+        </form>
+        <div class="buttons">
+            <button form="form" id="sendButton">Отправить</button>
+            <button id="receiveButton">Получить</button>
+        </div>
+    </div>
+    <div class="modal_wrapper">
+        <div class="modal">
+            <h3>Данные из .txt файла</h3>
+            <div class="modal_text-data">
+            </div>
+            <h3>Данные из .xml файла</h3>
+            <div class="modal_xml-data">
+            </div>
+            <button class="modal_close">Закрыть</button>
+        </div>
+    </div>
+    <script src="/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab4</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1>Количество добавленных строк: <div id="rowCounter"></div>
+            <h1>Количество добавленных столбцов: <div id="colCounter"></div>
+        </h1>
+        <table border="1" id="table">
+            <tr>
+                <td>Ячейка1/1</td>
+                <td>Ячейка1/2</td>
+            </tr>
+            <tr>
+                <td>Ячейка2/1</td>
+                <td>Ячейка2/2</td>
+            </tr>
+        </table>
+        <br>
+        <form class="form_add" id="formAdd">
+
+            <input type="radio" name="add" id="add1" checked>
+            <label for="add1">Добавить строку</label>
+            <select name="pos" id="position">
+                <option value="up" id="up" selected>Вверх</option>
+                <option value="down" id="down">Вниз</option>
+            </select>
+            
+            <br>
+            <input type="radio" name="add" id="add2">
+            <label for="add2">Добавить столбец</label>
+
+            <select name="posCol" id="posCol">
+                <option value="left" id="left" selected>Влево</option>
+                <option value="right" id="right">Вправо</option>
+            </select>
+            
+            <br>
+
+            <label for="add2">Выберите слово</label>
+
+            <select name="word" id="word" onmousedown="this.value='';" onchange="getword(this.value)" >
+                <option value="cell" id="cell" >cell</option>
+                <option value="number" id="number" >number</option>
+                <option value="filling" id="filling">filling</option>
+                <option value="somethink" id="somethink">somethink</option>
+                <option value="bam" id="bam" >bam</option>
+                <option value="nonsense" id="nonsense" >nonsense</option>
+
+
+            </select>
+
+            <br>
+            <input class="inputBtn" type="button" id="btn" value="Добавить">
+            
+         <!--   <input  class="inputBtn" type="button" id ="changeword" value="Заменить слово"> -->
+            <br><br> 
+            <input class="inputBtn" type="button" id="iad" value="Количество Добавленнх строк-столбцов"><br><br> 
+
+            
+            <br><br><br>
+            <input class="inputBtn" type="button" id="deleteFirst" value="Удалить первую строку"><br>
+            <input class="inputBtn" type="button" id="deleteLast" value="Удалить последнюю строку">
+        </form>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

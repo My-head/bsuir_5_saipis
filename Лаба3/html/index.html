@@ -1,0 +1,181 @@
+<html lang="en">
+<head>
+    <title>Лаба 3</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+   
+</head>
+<body>
+<div id="flex-conteiner">
+    <header><img src="../resource/header.jpg" alt="">
+    </header>
+    <div id="group">
+        <article>
+            <form id="myForm" autocomplete="on" action=" " onsubmit="return false;">
+                <h2>Опрос покупателя</h2>
+                <fieldset>
+                    <legend>Контактная информация</legend>
+                    <div> <label><span>Имя </span>  <input type="text" name="name" id="name" placeholder="Введите имя"
+                                                         required pattern="^[а-яА-Я]+$"></label></div>
+                    <div class="radio">
+                        <label>
+                            <span>Пол: </span>
+                            <input type="radio" name="sex" value="мужской">мужской
+                            <input type="radio" name="sex" value="женский">женский
+                        </label>
+                    </div>
+                    <div><label><span>Дата и время рождения: </span><input type="datetime-local" name="datetime-local" id="dateB" min="1921-10-01T13:30" max="2017-06-30T13:30" required></label>
+                    </div>
+                    <div><label><span>E-mail: </span><input type="email" id="email" name="email" required
+                                                            placeholder="Введите E-mail"></label></div>
+                </fieldset>
+                <fieldset>
+                    <legend>Предпочтения в выборе модели смартфона: </legend>
+                    <div class="radio">
+                        <label><span>Ваша избранная модель смартфона: </span>
+                            <select name="type" id="type">
+                                <option value="Apple">Apple</option>
+                                <option value="Sumsung">Sumsung</option>
+                                <option value="Huawei">Huawei</option>
+                                <option value="Xiaomi">Xiaomi</option>
+                                <option value="Google_pixel">Google pixel</option>
+
+
+                            </select></label>
+                    </div>
+                    <div><label><span>Дополнительные плюшки на которые обращаете внимение: </span>
+                        <div><input type="checkbox" name="extra" value="Безрамочный">Безрамочный
+                            <input type="checkbox" name="extra" value="QCharge">QCharge
+                            <input type="checkbox" name="extra" value="NFC">NFC 
+                        </div>
+                    </label>
+                    </div>
+
+                    <div><label><span>Почему предпочетаете смартфон именно этой модели: </span>
+                        <div>
+                            <textarea rows="5" cols="45" name="otzyv" id="otzyv"></textarea>
+                        </div>
+                    </label>
+                    </div>
+
+                </fieldset>
+                <div>
+                    <input type="submit" onclick="valid(document.getElementById('myForm'))" value="Заполнить"/>
+                    <input type="reset" value="Сброс"/>
+                    <input type="button" onclick='OpenResult()' value="Посмотреть результаты"/>
+                </div>
+            </form>
+        </article>
+        <nav><h3>Связь с нами</h3>
+            <a href="">Twitter</a>
+            <a href="">Instagram</a>
+            <a href="">Facebook</a>
+            <a href="">E-mail</a>
+            <a href="">Вконтакте</a>
+        </nav>
+
+        <aside>
+            <h3>Меню</h3>
+            <a href="">Главная</a>
+            <a onclick="OpenResult()" >Результаты опроса </a>
+        </aside>
+    </div>
+    <footer><p>Minsk, 2021</p>
+    </footer>
+</div>
+
+<script>
+    let arrayOfObjects = [];
+    let index = 0;
+    let object = {};
+
+    function OpenResult() {
+
+        let result = [];
+        for (let j = 0; j < index; j++) {
+            result[j] = arrayOfObjects[j].name + " " +
+                arrayOfObjects[j].radioSex + " " +
+                arrayOfObjects[j].date + " " +
+                arrayOfObjects[j].email + " " +
+                arrayOfObjects[j].type + " " +
+                arrayOfObjects[j].otzyv + " " +
+                arrayOfObjects[j].extra;
+
+        }
+        result = result.join(";");
+        window.open('index2.html?&' + result);
+        //window.open('results.html');
+        // window.location.href = 'results.html?';
+    }
+
+    function Submit() {
+        debugger;
+        let sex = document.getElementsByName('sex');
+        let sexValue = " ";
+        for (let i = 0; i < sex.length; i++) {
+            if (sex[i].checked) {
+                sexValue = sex[i].value;
+            }
+        }
+
+        let extra = document.getElementsByName('extra');
+        let extraValue = " ";
+        for (let i = 0; i < extra.length; i++) {
+            if (extra[i].checked) {
+                extraValue = extra[i].value;
+            }
+        }
+
+        object =
+            {
+                name: document.getElementById("name").value,
+                radioSex: sexValue,
+                date: document.getElementById("dateB").value,
+                email: document.getElementById("email").value,
+                type: document.getElementById("type").value,
+                otzyv: document.getElementById("otzyv").value,
+                extra: extraValue,
+
+            };
+            
+        arrayOfObjects[index] = object;
+        index++;
+
+        alert("Данные добавлены!");
+
+    }
+</script>
+<script type="text/javascript">
+    function valid(form) {
+        debugger;
+        let fail = false;
+        let name = form.name.value;
+        let sex = form.sex.value;
+        let date = form.dateB.value;
+        let email = form.email.value;
+        let otzyv = form.otzyv.value;
+        let adr_pattern = /[a-z0-9_-]+@[a-z0-9_-]+\.[a-z]{2,8}/i;
+        let name_pattern=/[а-яА-Я]+$/;
+
+        if (name === "" || name === " ")
+            fail = "Вы не ввели имя!";
+        else if(name_pattern.test(name) === false)
+            fail="Вы ввели имя неверно!";
+        else if (sex === "")
+            fail = "Укажите Ваш пол!";
+        else if (date === "")
+            fail = "Укажите дату рождения!";
+        else if (adr_pattern.test(email) === false)
+            fail = "Вы ввели e-mail неправильно!";
+            else if (otzyv === "")
+                fail = "Укажите отзыв!";
+        if (fail)
+            alert(fail);
+        else Submit();
+    }
+
+</script>
+
+</body>
+</html>

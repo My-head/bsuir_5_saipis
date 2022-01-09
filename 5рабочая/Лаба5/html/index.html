@@ -1,0 +1,84 @@
+<html>
+<head>
+    <title>Laborotory №5</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script src="../js/js.js"></script>
+</head>
+<body onload="dbObject.functions.createBd(); hideSomeObjects()">
+<main>
+    <form id="forma" action=" " onsubmit="return false;">
+        <h2>Автомобили автостоянки</h2>
+        <div id="conteiner">
+
+            <div class="field">
+                <label for="name">Название авто: </label>
+                <input type="text" name="name" id="name" placeholder="Название авто:" required pattern="^[0-9]+$">
+            </div>
+            <div class="field">
+                <label for="man">ФИО владельца : </label>
+                <input type="text" name="man" id="man" placeholder="ФИО владельца :">
+            </div>
+            <div class="field">
+                <label for="carnumb">Номер авто: </label>
+                <input type="text" name="carnumb" id="carnumb"  placeholder="Номер авто:">
+            </div>
+
+
+            <div class="field">
+                <label for="reason">Время стоянки(минут): </label>
+                <input type="number" name="reason" id="reason" maxlength="13" placeholder="Введите данные" min="0"  required pattern="[A-0-9]+$" >
+            </div>
+
+
+            <div class="field" id="DiagnosisBlock">
+                <label id="labelForInputDiagnosis">
+                </label>
+            </div>
+
+            <div class="field" id="DoctorBlock">
+                <label id="labelForInputDoctor">
+                </label>
+            </div>
+
+           <!--
+            <div class="field" id="SickLeaveBlock">
+                <label id="labelForInputSickLeave">
+                </label>
+            </div>
+        
+    -->
+</div>
+        <input class="button" type="button" value="Ввести запись в таблицу" onclick="Submit()"/>
+        <input class="button" type="button" value="Очистить форму" onclick="reset()"/>
+        <input class="button" type="button" value="Посмотреть таблицу" onclick="showToolTable()"/>
+
+        <div>
+            <input class="button" type="button" value="Добавить свойство" onclick="addNewField()"/>
+            <select id="propertiesToAdd" >
+                <option value="1">Адрес владельца</option>
+                <option value="2">Номер владельца</option>
+               <!-- <option value="3">Дата </option>-->
+            </select>
+        </div>
+    </form>
+    <table id="myTable" class="hidden">
+        <tbody>
+
+        </tbody>
+    </table>
+    <br>
+
+    <div id="idDel">
+        <input class="button" type="reset" value="Удалить запись" onclick="removeItem()"/>
+        <label>ID записи для удаления:</label>
+        <select id="idRow" name="idRow">
+        </select>
+    </div>
+    <input class="button" type="button" value="Авомобили с мин/ макс временем парковки" onclick="ShowMinMax()"/>
+
+  <!--  <input class="button" type="button" value="показать КОЛ_ВО" onclick="numbb()"/>   -->
+
+</main>
+</body>
+</html>

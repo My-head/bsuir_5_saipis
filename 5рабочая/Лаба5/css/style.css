@@ -1,0 +1,66 @@
+body {
+    background: url("../resource/1.jpg");
+    text-align: center;
+}
+
+body > main {
+    width: 900px;
+    margin: 0 auto;
+    background: rgba(255, 224, 217, 0.95);
+}
+
+#conteiner{
+    width: 400px;  margin: 0 auto;
+}
+
+table {
+    align-content: center;
+    border: 1px solid #ff0000;
+    margin: 0 auto;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #ff433d;
+    width: 200px;
+    height: 40px;
+}
+
+
+
+form>div {
+    padding: 5px;
+}
+
+form > h2 {
+    text-align: center;
+    border-bottom: 1px solid cornflowerblue;
+}
+
+input {
+    background: rgba(95, 183, 225, 0.3);
+    border: 1px solid royalblue;
+    text-align: center;
+}
+
+form  label {
+    font-size: 18px;
+    float: left;
+}
+
+.field {
+    clear: both;
+    text-align: right;
+}
+
+.button{
+    margin: 20px 5px;
+    padding: 4px;
+    border: 1px solid #7c7c7c;
+    background-color: rgba(95, 183, 225, 0.3);
+}
+
+.button:hover{
+    cursor: pointer;
+    border: 2px solid royalblue;
+}
